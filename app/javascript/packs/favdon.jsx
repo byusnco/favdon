@@ -6,21 +6,25 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
+class Favdon extends React.Component{
 
-Hello.defaultProps = {
-  name: 'David'
-}
+  constructor(props){
+    super(props)
+    this.state = {
+      name: this.props.name
+    }
+  }
 
-Hello.propTypes = {
-  name: PropTypes.string
+  render(){
+    return (
+      <div>Hello {this.state.name}!</div>
+    )
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <Favdon name="World" />,
     document.body.appendChild(document.createElement('div')),
   )
 })
