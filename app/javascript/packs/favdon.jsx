@@ -4,7 +4,11 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+import { BrowserRouter as Router, Route, Link, Switch, Match } from 'react-router-dom'
+import UsersShow from './users/show'
+import Home from './home'
+import {getMuiTheme, MuiThemeProvider} from 'material-ui/styles';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 class Favdon extends React.Component{
 
@@ -17,7 +21,14 @@ class Favdon extends React.Component{
 
   render(){
     return (
-      <div>Hello {this.state.name}!</div>
+      <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={(route) => (<Home route={route}/>) } />
+            <Route exact path="/users/:id" component={(route) => (<UsersShow route={route}/>) } />
+          </Switch>
+        </Router>
+      </MuiThemeProvider>
     )
   }
 }

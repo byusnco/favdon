@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510050522) do
+ActiveRecord::Schema.define(version: 20170510083150) do
+
+  create_table "mastodon_clients", force: :cascade do |t|
+    t.string "domain"
+    t.string "client_id"
+    t.string "client_secret"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "uri", null: false
+    t.string "url"
+    t.text "content"
+    t.integer "favourites_count"
+    t.integer "reblogs_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
@@ -21,6 +40,9 @@ ActiveRecord::Schema.define(version: 20170510050522) do
     t.integer "statuses_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "token"
+    t.string "uid"
+    t.integer "instance_account_id"
   end
 
 end
