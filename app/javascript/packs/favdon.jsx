@@ -17,9 +17,6 @@ class Favdon extends React.Component{
 
   constructor(props){
     super(props)
-    this.state = {
-      name: this.props.name
-    }
   }
 
   render(){
@@ -28,7 +25,7 @@ class Favdon extends React.Component{
         <Router>
           <Switch>
             <Route exact path="/" component={(route) => (<Home route={route}/>) } />
-            <Route exact path="/users/:id" component={(route) => (<User route={route}/>) } />
+            <Route exact path="/users/:id" component={(route) => (<User route={route} current_user={this.props.current_user}/>) } />
           </Switch>
         </Router>
       </MuiThemeProvider>

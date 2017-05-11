@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'index#index'
   get '/auth/:provider/callback', to: 'users#create'
 
+  delete 'logout', to: 'sessions#destroy'
+
   resources :users, only: [:show]
 
   namespace :api, { format: :json } do

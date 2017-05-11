@@ -19,6 +19,7 @@ class UsersController < ApplicationController
       user.url      = user_info['url']
       user.statuses_count = user_info['statuses_count']
     end
+    login(@user)
     redirect_to @user
   end
 
