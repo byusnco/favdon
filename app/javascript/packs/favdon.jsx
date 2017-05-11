@@ -5,10 +5,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Link, Switch, Match } from 'react-router-dom'
-import UsersShow from './users/show'
+import User from './users/user'
 import Home from './home'
 import {getMuiTheme, MuiThemeProvider} from 'material-ui/styles';
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 class Favdon extends React.Component{
 
@@ -25,7 +28,7 @@ class Favdon extends React.Component{
         <Router>
           <Switch>
             <Route exact path="/" component={(route) => (<Home route={route}/>) } />
-            <Route exact path="/users/:id" component={(route) => (<UsersShow route={route}/>) } />
+            <Route exact path="/users/:id" component={(route) => (<User route={route}/>) } />
           </Switch>
         </Router>
       </MuiThemeProvider>
@@ -35,7 +38,7 @@ class Favdon extends React.Component{
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Favdon name="World" />,
+    <Favdon />,
     document.body.appendChild(document.createElement('div')),
   )
 })

@@ -1,0 +1,156 @@
+
+.user-card {
+  background: $ui-base-color;
+  background-size: cover;
+  padding: 60px 0;
+  padding-bottom: 0;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 0 15px rgba($base-shadow-color, 0.2);
+  overflow: hidden;
+  position: relative;
+
+  @media screen and (max-width: 700px) {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .name {
+    display: block;
+    font-size: 20px;
+    line-height: 18px * 1.5;
+    color: $primary-text-color;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    small {
+      display: block;
+      font-size: 14px;
+      color: $ui-highlight-color;
+      font-weight: 400;
+    }
+  }
+
+  .avatar {
+    width: 120px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+
+    img {
+      width: 120px;
+      height: 120px;
+      display: block;
+      border-radius: 120px;
+    }
+  }
+
+  .controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+  }
+
+  .details {
+    display: flex;
+    margin-top: 30px;
+    position: relative;
+    z-index: 2;
+    flex-direction: row;
+  }
+
+  .details-counters {
+    display: flex;
+    flex-direction: row;
+    order: 0;
+  }
+
+  .counter {
+    width: 80px;
+    color: $ui-primary-color;
+    padding: 5px 10px 0;
+    margin: 0;
+    margin-bottom: 10px;
+    border-right: 1px solid $ui-primary-color;
+    cursor: default;
+    position: relative;
+
+    a {
+      display: block;
+    }
+
+    &::after {
+      display: block;
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      border-bottom: 4px solid $ui-primary-color;
+      opacity: 0.5;
+      transition: all 0.8s ease;
+    }
+
+    &.active {
+      &::after {
+        border-bottom: 4px solid $ui-highlight-color;
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+        transition-duration: 0.2s;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .counter-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .counter-number {
+      font-weight: 500;
+      font-size: 18px;
+      color: $primary-text-color;
+    }
+  }
+
+  .bio {
+    flex: 1;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 5px 10px;
+    order: 1;
+  }
+
+  @media screen and (max-width: 480px) {
+    .details {
+      display: block;
+    }
+
+    .bio {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .counter {
+      flex: 1 1 auto;
+    }
+
+    .counter:last-child {
+      border-right: none;
+    }
+  }
+}

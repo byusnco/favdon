@@ -1,0 +1,52 @@
+
+.status-card{
+
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  .content{
+    padding: 35px 35px 0px 35px;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 17px;
+    line-height: 27px;
+  }
+
+  .details {
+    display: flex;
+    margin-top: 30px;
+    position: relative;
+    z-index: 2;
+    flex-direction: row;
+  }
+
+  .details-counters {
+    display: flex;
+    flex-direction: row;
+    order: 0;
+  }
+
+  .counter {
+    width: 80px;
+    color: $ui-primary-color;
+    padding: 5px 10px 0;
+    margin: 0;
+    margin-bottom: 10px;
+    border-right: 1px solid $ui-primary-color;
+    cursor: default;
+    position: relative;
+    text-align: center;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+
+    .counter-label {
+    }
+
+    .counter-number {
+      font-weight: bold;
+      font-size: 18px;
+      color: $primary-text-color;
+    }
+  }
+
+}

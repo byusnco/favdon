@@ -7,7 +7,7 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   # GET /api/v1/users/:id/statuses
   def statuses
-    @statuses = @user.statuses.order('favourites_count DESC')
+    @statuses = @user.statuses.order('favourites_count + reblogs_count DESC')
     render 'api/v1/statuses/index.json'
   end
 
