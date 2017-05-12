@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     end
     cookies[:auth_token] = issue_jwt_token({user_id: @user.id})
     cookies[:current_user_id] = @user.id
+    cookies[:avatar] = @user.avatar
     redirect_to @user
   end
 

@@ -5,6 +5,8 @@ import Cookies from 'js-cookie'
 import {Card} from 'material-ui/Card'
 import RaisedButton from 'material-ui/RaisedButton'
 import CircularProgress from 'material-ui/CircularProgress'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import Home from 'material-ui/svg-icons/action/home'
 
 class User extends React.Component{
 
@@ -106,6 +108,13 @@ class User extends React.Component{
             {statuses}
           </div>
         </div>
+        <FloatingActionButton
+          backgroundColor='#fff'
+          children={<Home />}
+          iconStyle={{width: '56px', height: '56px', fill: '#999'}}
+          style={{position: 'absolute', right: '50px', bottom: '50px'}}
+          onTouchTap={()=>this.props.route.history.push('/')}
+        />
       </div>
     )
   }
