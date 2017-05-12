@@ -36,7 +36,6 @@ class User extends React.Component{
   }
 
   render(){
-    console.log(this.state)
     var statuses
     if(this.state.statuses.length > 0){
      statuses = this.state.statuses.map((status) => (<Status key={status.uri} status={status} />))
@@ -127,18 +126,6 @@ class User extends React.Component{
       this.setState({user: json})
     })
   }
-
-  //getCSRFToken() {
-  //  const metas = document.getElementsByTagName('meta');
-  //  for (let i = 0; i < metas.length; i++) {
-  //    const meta = metas[i];
-  //    if (meta.getAttribute('name') === 'csrf-token') {
-  //      return meta.getAttribute('content');
-  //    }
-  //  }
-  //  return null;
-  //}
-
 }
 
 var styles = {

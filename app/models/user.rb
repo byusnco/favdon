@@ -7,7 +7,8 @@ class User < ApplicationRecord
     res = self.client.statuses(self.instance_account_id, limit: 40)
     statuses << res if res.count > 0
     i = 0
-    while res.count > 0
+    # currently limit to 10 api requests
+    while res.count > 0 && statuses.count <= 10
       res = self.client.statuses(self.instance_account_id, limit: 40, max_id: statuses[i].last.id)
       statuses << res if res.count > 0
       i += 1
