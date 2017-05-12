@@ -54,7 +54,7 @@ class Favdon extends React.Component{
           children={<PowerSettingsNew />}
           iconStyle={{width: '56px', height: '56px', fill: '#999'}}
           style={{position: 'fixed', right: '50px', bottom: '190px'}}
-          onTouchTap={ this.logout.bind(this) }
+          onTouchTap={this.logout.bind(this)}
         />
       )
     }
@@ -87,10 +87,12 @@ class Favdon extends React.Component{
   }
 
   logout(){
-    // remove all cookies
-    document.cookie.split(";").forEach(function(c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
-    location.href = '/'
+    var res = confirm('ログアウトしますか？')
+    if(res){
+      window.location.href = '/logout'
+    }
   }
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
