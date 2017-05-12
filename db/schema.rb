@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170510083150) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "mastodon_clients", force: :cascade do |t|
     t.string "domain"
     t.string "client_id"

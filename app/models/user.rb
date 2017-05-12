@@ -16,11 +16,6 @@ class User < ApplicationRecord
     return statuses.map{ |collection| collection.to_a }.flatten
   end
 
-  def instance
-    _, domain = self.uid.split('@')
-    domain
-  end
-
   def client
     Mastodon::REST::Client.new(base_url: "https://#{self.instance}", bearer_token: self.token)
   end

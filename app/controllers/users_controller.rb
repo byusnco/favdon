@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       user.avatar   = user_info['avatar']
       user.url      = user_info['url']
       user.statuses_count = user_info['statuses_count']
+      user.instance = @auth['uid'].split('@')[1]
     end
     cookies[:auth_token] = issue_jwt_token({user_id: @user.id})
     cookies[:current_user_id] = @user.id
