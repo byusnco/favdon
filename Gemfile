@@ -39,8 +39,7 @@ gem 'responders'
 gem 'omniauth'
 gem 'mastodon-api', require: 'mastodon'
 gem 'omniauth-mastodon'
-
-gem 'react-rails'
+gem 'jwt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

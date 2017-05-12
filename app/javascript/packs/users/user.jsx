@@ -1,7 +1,8 @@
 import React from 'react'
 import Status from '../statuses/status'
-import {Card} from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
+import {Card} from 'material-ui/Card'
+import RaisedButton from 'material-ui/RaisedButton'
+import Cookies from 'js-cookie'
 
 class User extends React.Component{
 
@@ -9,6 +10,7 @@ class User extends React.Component{
     super(props)
     this.state = {
       user: {
+        id: '',
         username: '',
         url: '',
         avatar: '',
@@ -16,18 +18,20 @@ class User extends React.Component{
         instance: ''
       },
       statuses: [],
-      fetching: false
+      fetching: false,
+      current_user_id: ''
     }
   }
 
   componentWillMount() {
-    this.fetchUser();
-    this.fetchStatuses();
+    this.fetchUser()
+    this.fetchStatuses()
+    this.setState({current_user_id: Cookies.get('current_user_id')})
   }
 
   componentWillReceiveProps(nextProps){
     if (nextProps.route.match.params.id !== this.props.route.match.params.id) {
-      this.fetchUser(nextProps.route.match.params.id);
+      this.fetchUser(nextProps.route.match.params.id)
     }
   }
 
@@ -37,7 +41,7 @@ class User extends React.Component{
     if(this.state.statuses.length > 0){
      statuses = this.state.statuses.map((status) => (<Status key={status.uri} status={status} />))
     }
-    if(this.props.current_user.instance === this.state.user.instance && this.props.current_user.username === this.state.user.username){
+    if(this.state.current_user_id === this.state.user.id.toString()){
       var fetchButton = <RaisedButton
         icon={mastodon_svg}
         label='Mastodonからデータを取得'
@@ -96,7 +100,8 @@ class User extends React.Component{
 
   onClickFetchData(){
     this.setState({fetching: true})
-    fetch(`/api/v1/users/${this._userId()}/fetch`,{
+    fetch(`/api/v1/users/fetch`,{
+      headers: { Authorization: `Bearer ${Cookies.get('auth_token')}` },
       method: 'post',
       body: JSON.stringify({})
     }).then((response) =>{ return response.json()}

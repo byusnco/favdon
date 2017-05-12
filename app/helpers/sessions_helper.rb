@@ -1,21 +1,24 @@
+require 'jwt'
+
 module SessionsHelper
 
-  # https://www.railstutorial.org/book/basic_login
-  def login(user)
-    session[:user_id] = user.id
+  # from http://www.thegreatcodeadventure.com/jwt-auth-in-rails-from-scratch/
+  ALGORITHM = 'HS256'
+  def issue_jwt_token(payload)
+    JWT.encode(
+      payload,
+      Rails.application.secrets.jwt_auth_secret,
+      ALGORITHM
+    )
   end
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
-
-  def logged_in?
-    !current_user.nil?
-  end
-
-  def logout
-    session.delete(:user_id)
-    @current_user = nil
+  def decode_jwt_token(token)
+    JWT.decode(
+      token,
+      Rails.application.secrets.jwt_auth_secret,
+      true,
+      {algorithm: ALGORITHM}
+    ).first
   end
 
 end

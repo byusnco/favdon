@@ -19,7 +19,8 @@ class UsersController < ApplicationController
       user.url      = user_info['url']
       user.statuses_count = user_info['statuses_count']
     end
-    login(@user)
+    cookies[:auth_token] = issue_jwt_token({user_id: @user.id})
+    cookies[:current_user_id] = @user.id
     redirect_to @user
   end
 

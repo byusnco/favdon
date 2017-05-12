@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:show] do
         get :statuses
-        post :fetch
       end
+      post '/users/fetch', to: 'users#fetch'
     end
   end
 end

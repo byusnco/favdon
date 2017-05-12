@@ -1,6 +1,7 @@
 class Api::V1::UsersController < Api::V1::BaseController
 
-  before_action :set_user
+  before_action :set_user, except: :fetch
+  before_action :authenticate, only: :fetch
 
   def show
   end
@@ -11,9 +12,10 @@ class Api::V1::UsersController < Api::V1::BaseController
     render 'api/v1/statuses/index.json'
   end
 
-  # POST /api/v1/users/:id/fetch
+  # TODO: POST /api/v1/statuses/fetch is better?
+  # POST /api/v1/users/fetch
   def fetch
-    @objects = @user.get_statuses
+    @objects = current_user.get_statuses
     @statuses = []
     @objects.each do |object|
       if object.favourites_count != 0 && object.reblogs_count != 0
@@ -22,7 +24,7 @@ class Api::V1::UsersController < Api::V1::BaseController
           status.content = object.content
           status.favourites_count = object.favourites_count
           status.reblogs_count = object.reblogs_count
-          status.user_id = @user.id
+          status.user_id = current_user.id
         end
       end
       #TODO: update counts if not new record
