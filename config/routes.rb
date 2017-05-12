@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         get :statuses
       end
       post '/users/fetch', to: 'users#fetch'
+      resources :statuses, only: [:index]
     end
   end
 end

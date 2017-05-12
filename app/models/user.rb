@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  has_many :statuses
+  has_many :statuses, dependent: :destroy
 
   def get_statuses
     statuses = []

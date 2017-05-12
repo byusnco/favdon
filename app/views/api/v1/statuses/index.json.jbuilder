@@ -4,4 +4,9 @@ json.array! @statuses do |status|
   json.content status.content
   json.favourites_count status.favourites_count
   json.reblogs_count status.reblogs_count
+  json.user do
+    json.uid status.user.uid
+    json.avatar status.user.avatar
+    json.url status.user.url
+  end
 end

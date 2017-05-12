@@ -4,8 +4,31 @@
   margin-top: 15px;
   margin-bottom: 15px;
 
+  .header{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-top: 20px;
+
+    .avatar{
+      .image{
+        width: 48px;
+        height: 48px;
+        background-size: 48px 48px;
+        border-radius: 10px;
+      }
+    }
+
+    .name{
+      font-size: 14px;
+      color: $ui-highlight-color;
+      font-weight: 400;
+      margin-left: 15px;
+    }
+  }
+
   .content{
-    padding: 35px 35px 0px 35px;
+    padding: 20px 35px 0px 35px;
     color: rgba(0, 0, 0, 0.7);
     font-size: 17px;
     line-height: 27px;

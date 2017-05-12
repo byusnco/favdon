@@ -16,8 +16,21 @@ class Status extends React.Component{
   render(){
     return(
       <Card className='status-card'>
-
-        <div className='content' dangerouslySetInnerHTML={{__html: this.props.status.content}}></div>
+        <div className='header'>
+          <a href={this.props.status.user.url} target='_blank'>
+            <div className='avatar'>
+              <div className='image' style={{backgroundImage: `url('${this.props.status.user.avatar}')`}} />
+            </div>
+          </a>
+          <a href={this.props.status.user.url} target='_blank' style={{textDecoration: 'none'}}>
+            <div className='name'>
+              {this.props.status.user.uid}
+            </div>
+          </a>
+        </div>
+        <a href={this.props.status.url} target='_blank'  style={{textDecoration: 'none'}}>
+          <div className='content' dangerouslySetInnerHTML={{__html: this.props.status.content}}></div>
+        </a>
         <div className='details'>
           <div className='details-counters'>
             <div className='counter'>
