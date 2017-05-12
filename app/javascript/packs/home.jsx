@@ -20,7 +20,7 @@ class Home extends React.Component{
         <FloatingActionButton
           backgroundColor='#fff'
           children={<img src={avatar} />}
-          style={{position: 'fixed', right: '50px', bottom: '50px'}}
+          style={{position: 'fixed', right: '50px', bottom: '50px', zIndex: 999}}
           onTouchTap={()=>this.props.route.history.push(`/users/${Cookies.get('current_user_id')}`)}
         />
       )
