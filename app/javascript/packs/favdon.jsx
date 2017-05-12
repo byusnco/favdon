@@ -33,16 +33,22 @@ class Favdon extends React.Component{
       <div>
         <h2>Fav丼について</h2>
         <ul>
-          <li>当サービスはbyus&co.ltdの代表<a href='http://trickle.ink/@foloinfo' target='_blank'>@foloinfo</a>によって半ば趣味的に開発されている、α版の試験運用中サービスです。問題は避けるように努めますが、予期せぬバグなどがある場合があります。</li>
+          <li>Fav丼(α)とは、ふぁぼられたりブーストされたtootが閲覧できるサービスです。</li>
+          <li>Mastodon全体でユーザが急激に増えたため、興味に合いそうなユーザを探すのムリ、となったので作りました。</li>
+          <li>当サービスはbyus&co.ltdの代表<a href='http://trickle.ink/@foloinfo' target='_blank'>@foloinfo</a>によって半ば趣味的に開発されている、α版の試験運用中サービスです。問題は避けるように努めますが、予期せぬバグ、突然の死などがある場合があります。</li>
           <li>当サービスの利用によって生じた不利益など、責任は負いかねますので予めご了承の上ご利用下さい。</li>
           <li>Fav丼はGNUライセンスの元OSSとして開発しています。ご自身のサーバで動かす改造するなど、ご自由にご利用下さい。（drip.inkへのリンクを何処かに貼ってもらえたりするとうれしいです）</li>
-          <li>バグを発見した場合、セキュリティ的な指摘、機能要望など、GithubのIssueでご報告下さい。(Pull-req大歓迎です)</li>
+          <li>バグを発見した場合、セキュリティ的な指摘、機能要望など、GithubのIssueやマストドン上でご報告下さい。(Pull-reqも歓迎です)</li>
         </ul>
-        <ul>
         <h2>使い方</h2>
+        <ul>
           <li>Masotodonでログイン後、データ取得ボタンを押すとFav / Boostされたtootが取得されます（試験中のため最近の400件に限定してます）。</li>
           <li>累計Fav数、累計Boost数、1件以上のFav/Boostが付いたtootが、合算した件数順に閲覧できます。</li>
           <li><Link to={'/users/1'} onClick={()=>{this.setState({help: false})}}>サンプルはこちら</Link></li>
+        </ul>
+        <h2>今後の予定</h2>
+        <ul>
+          <li>サービスが利用されそうな雰囲気なら、ぼちぼち機能・サーバ等拡充していくと思います。</li>
         </ul>
       </div>
     )
