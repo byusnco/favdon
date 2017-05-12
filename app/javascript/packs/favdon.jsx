@@ -84,7 +84,7 @@ class Favdon extends React.Component{
             <FloatingActionButton
               backgroundColor='#fff'
               children={github}
-              style={{position: 'fixed', right: '25px', top: '25px', zIndex: 999}}
+              style={{position: 'fixed', right: '50px', top: '25px', zIndex: 999}}
               href='https://github.com/byusnco/favdon'
               target='_blank'
               mini={true}
