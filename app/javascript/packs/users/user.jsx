@@ -112,7 +112,7 @@ class User extends React.Component{
           backgroundColor='#fff'
           children={<Home />}
           iconStyle={{width: '56px', height: '56px', fill: '#999'}}
-          style={{position: 'absolute', right: '50px', bottom: '50px'}}
+          style={{position: 'fixed', right: '50px', bottom: '50px'}}
           onTouchTap={()=>this.props.route.history.push('/')}
         />
       </div>

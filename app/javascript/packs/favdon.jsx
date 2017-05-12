@@ -35,7 +35,7 @@ class Favdon extends React.Component{
         <ul>
           <li>当サービスはbyus&co.ltdの代表<a href='http://trickle.ink/@foloinfo' target='_blank'>@foloinfo</a>によって半ば趣味的に開発されている、α版の試験運用中サービスです。問題は避けるように努めますが、予期せぬバグなどがある場合があります。</li>
           <li>当サービスの利用によって生じた不利益など、責任は負いかねますので予めご了承の上ご利用下さい。</li>
-          <li>Fav丼はGNUライセンスの元OSSとして開発しています。ご自身のサーバで動かす改造するなど、ご自由にご利用下さい。（drip.inkへのリンクを何処かに貼ってもらえたりするるとうれしいです）</li>
+          <li>Fav丼はGNUライセンスの元OSSとして開発しています。ご自身のサーバで動かす改造するなど、ご自由にご利用下さい。（drip.inkへのリンクを何処かに貼ってもらえたりするとうれしいです）</li>
           <li>バグを発見した場合、セキュリティ的な指摘、機能要望など、GithubのIssueでご報告下さい。(Pull-req大歓迎です)</li>
         </ul>
         <ul>
@@ -53,7 +53,7 @@ class Favdon extends React.Component{
           backgroundColor='#fff'
           children={<PowerSettingsNew />}
           iconStyle={{width: '56px', height: '56px', fill: '#999'}}
-          style={{position: 'absolute', right: '50px', bottom: '190px'}}
+          style={{position: 'fixed', right: '50px', bottom: '190px'}}
           onTouchTap={ this.logout.bind(this) }
         />
       )
@@ -71,7 +71,7 @@ class Favdon extends React.Component{
               backgroundColor='#fff'
               children={<Help />}
               iconStyle={{width: '56px', height: '56px', fill: '#999'}}
-              style={{position: 'absolute', right: '50px', bottom: (this.state.logged_in ? '120px' : '50px')}}
+              style={{position: 'fixed', right: '50px', bottom: (this.state.logged_in ? '120px' : '50px')}}
               onTouchTap={()=>this.setState({help: true})}
             />
             <Dialog
