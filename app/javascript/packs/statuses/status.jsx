@@ -1,7 +1,8 @@
 import React from 'react'
-import {Card, CardTitle, CardText} from 'material-ui/Card';
-import Star from 'material-ui/svg-icons/toggle/star';
-import Repeat from 'material-ui/svg-icons/av/repeat';
+import {Card, CardTitle, CardText} from 'material-ui/Card'
+import Star from 'material-ui/svg-icons/toggle/star'
+import Repeat from 'material-ui/svg-icons/av/repeat'
+import {Link} from 'react-router-dom'
 
 class Status extends React.Component{
 
@@ -17,11 +18,11 @@ class Status extends React.Component{
     return(
       <Card className='status-card'>
         <div className='header'>
-          <a href={this.props.status.user.url} target='_blank'>
+          <Link to={`/users/${this.props.status.user.id}`}>
             <div className='avatar'>
               <div className='image' style={{backgroundImage: `url('${this.props.status.user.avatar}')`}} />
             </div>
-          </a>
+          </Link>
           <a href={this.props.status.user.url} target='_blank' style={{textDecoration: 'none'}}>
             <div className='name'>
               {this.props.status.user.uid}
