@@ -1,5 +1,5 @@
 class Api::V1::StatusesController < Api::V1::BaseController
-  before_action :authenticate, only: :favorite
+  before_action :authenticate, except: :index
   before_action :set_status, except: :index
 
   def index
