@@ -44,6 +44,7 @@ class Favdon extends React.Component{
         <ul>
           <li>Masotodonでログイン後、データ取得ボタンを押すとFav / Boostされたtootが取得されます（試験中のため最近の400件に限定してます）。</li>
           <li>累計Fav数、累計Boost数、1件以上のFav/Boostが付いたtootが、合算した件数順に閲覧できます。</li>
+          <li>toot右下のFav / Boostボタンから簡単にリモートのtootをFav / Boost出来ます。</li>
           <li><Link to={'/users/1'} onClick={()=>{this.setState({help: false})}}>サンプルはこちら</Link></li>
         </ul>
         <h2>今後の予定</h2>
