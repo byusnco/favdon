@@ -29,7 +29,6 @@ class Api::V1::UsersController < Api::V1::BaseController
         status.save
         @statuses << status
       end
-      #TODO: update counts if not new record
     end
     render 'api/v1/statuses/index.json'
   end

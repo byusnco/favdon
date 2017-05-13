@@ -38,6 +38,17 @@ class Home extends React.Component{
         />
       )
     }
+    if(!Cookies.get('current_user_id')){
+      var loginButton = (
+        <RaisedButton
+          icon={mastodon_svg}
+          href='/auth/mastodon'
+          label='Mastodonでログイン'
+          fullWidth={true}
+          primary={true}
+        />
+      )
+    }
     return(
       <div>
         <div style={styles.container}>
@@ -51,13 +62,8 @@ class Home extends React.Component{
             </a>
             の提供でお送りします (*´∀｀*)
           </div>
-          <RaisedButton
-            icon={mastodon_svg}
-            href='/auth/mastodon'
-            label='Mastodonでログイン'
-            fullWidth={true}
-            primary={true}
-          />
+          {loginButton}
+          
           <div style={styles.statusContainer}>
             <h2>人気のtoot</h2>
             <div style={{fontSize: '14px', color: 'rgba(0,0,0,0.6)'}}>Fav丼に登録されているデータ内の人気順です</div>

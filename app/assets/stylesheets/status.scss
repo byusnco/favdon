@@ -44,6 +44,10 @@
     color: rgba(0, 0, 0, 0.7);
     font-size: 17px;
     line-height: 27px;
+    a{
+      font-size: 14px;
+      color: $ui-highlight-color;
+    }
   }
 
   .details {
