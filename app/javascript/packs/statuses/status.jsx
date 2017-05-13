@@ -3,6 +3,7 @@ import {Card, CardTitle, CardText} from 'material-ui/Card'
 import Star from 'material-ui/svg-icons/toggle/star'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border'
 import Repeat from 'material-ui/svg-icons/av/repeat'
+import MoreHoriz from 'material-ui/svg-icons/navigation/more-horiz'
 import {Link} from 'react-router-dom'
 import * as moment from 'moment'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
@@ -58,6 +59,22 @@ class Status extends React.Component{
           style={styles.reblogButton}
           onTouchTap={this.onCreateReblog.bind(this)}
         />
+      }
+      if(this.state.loading_fav){
+        favButton = <FloatingActionButton
+            backgroundColor='#fff'
+            children={<MoreHoriz />}
+            iconStyle={{width: '40px', height: '40px', fill: '#999'}}
+            style={styles.favButton}
+          />
+      }
+      if(this.state.loading_reblog){
+        reblogButton = <FloatingActionButton
+            backgroundColor='#fff'
+            children={<MoreHoriz />}
+            iconStyle={{width: '40px', height: '40px', fill: '#999'}}
+            style={styles.reblogButton}
+          />
       }
     }
 
