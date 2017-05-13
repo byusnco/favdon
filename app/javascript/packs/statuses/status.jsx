@@ -23,41 +23,42 @@ class Status extends React.Component{
   }
 
   render(){
-    var favButton
-    if(this.state.faved){
-      favButton = <FloatingActionButton
-        backgroundColor='#fff'
-        children={<Star />}
-        iconStyle={{width: '40px', height: '40px', fill: 'rgb(241,212,6)'}}
-        style={styles.favButton}
-        onTouchTap={this.onDestroyFav.bind(this)}
-      />
-    }else{
-      favButton = <FloatingActionButton
-        backgroundColor='#fff'
-        children={<StarBorder />}
-        iconStyle={{width: '40px', height: '40px', fill: '#999'}}
-        style={styles.favButton}
-        onTouchTap={this.onCreateFav.bind(this)}
-      />
-    }
-    var reblogButton
-    if(this.state.reblogged){
-      reblogButton = <FloatingActionButton
-        backgroundColor='#fff'
-        children={<Repeat />}
-        iconStyle={{width: '40px', height: '40px', fill: 'rgb(43, 144, 217)'}}
-        style={styles.reblogButton}
-        onTouchTap={this.onDestroyReblog.bind(this)}
-      />
-    }else{
-      reblogButton = <FloatingActionButton
-        backgroundColor='#fff'
-        children={<Repeat />}
-        iconStyle={{width: '40px', height: '40px', fill: '#999'}}
-        style={styles.reblogButton}
-        onTouchTap={this.onCreateReblog.bind(this)}
-      />
+    var favButton, reblogButton
+    if(this.props.status.user.id !== parseInt(Cookies.get('current_user_id'))){
+      if(this.state.faved){
+        favButton = <FloatingActionButton
+          backgroundColor='#fff'
+          children={<Star />}
+          iconStyle={{width: '40px', height: '40px', fill: 'rgb(241,212,6)'}}
+          style={styles.favButton}
+          onTouchTap={this.onDestroyFav.bind(this)}
+        />
+      }else{
+        favButton = <FloatingActionButton
+          backgroundColor='#fff'
+          children={<StarBorder />}
+          iconStyle={{width: '40px', height: '40px', fill: '#999'}}
+          style={styles.favButton}
+          onTouchTap={this.onCreateFav.bind(this)}
+        />
+      }
+      if(this.state.reblogged){
+        reblogButton = <FloatingActionButton
+          backgroundColor='#fff'
+          children={<Repeat />}
+          iconStyle={{width: '40px', height: '40px', fill: 'rgb(43, 144, 217)'}}
+          style={styles.reblogButton}
+          onTouchTap={this.onDestroyReblog.bind(this)}
+        />
+      }else{
+        reblogButton = <FloatingActionButton
+          backgroundColor='#fff'
+          children={<Repeat />}
+          iconStyle={{width: '40px', height: '40px', fill: '#999'}}
+          style={styles.reblogButton}
+          onTouchTap={this.onCreateReblog.bind(this)}
+        />
+      }
     }
 
     return(
