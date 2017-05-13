@@ -218,7 +218,7 @@ class Status extends React.Component{
 var styles = {
   favButton: {
     position: 'relative',
-    right: '50px',
+    right: '40px',
     bottom: '20px',
     zIndex: 998
   },
