@@ -6,7 +6,6 @@
 
   .header{
     display: flex;
-    align-items: center;
     padding-left: 20px;
     padding-top: 20px;
 
@@ -20,10 +19,23 @@
     }
 
     .name{
+      align-self: center;
       font-size: 14px;
-      color: $ui-highlight-color;
       font-weight: 400;
       margin-left: 15px;
+      a{
+        color: $ui-highlight-color;
+      }
+    }
+
+    .relative-time{
+      align-self: center;
+      margin-left: auto;
+      padding-right: 20px;
+      font-size: 14px;
+      a{
+        color: $ui-secondary-color;
+      }
     }
   }
 

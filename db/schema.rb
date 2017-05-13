@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510083150) do
+ActiveRecord::Schema.define(version: 20170513005218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170510083150) do
     t.integer "reblogs_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "status_created_at"
   end
 
   create_table "users", force: :cascade do |t|

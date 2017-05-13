@@ -3,6 +3,7 @@ import {Card, CardTitle, CardText} from 'material-ui/Card'
 import Star from 'material-ui/svg-icons/toggle/star'
 import Repeat from 'material-ui/svg-icons/av/repeat'
 import {Link} from 'react-router-dom'
+import * as moment from 'moment'
 
 class Status extends React.Component{
 
@@ -23,11 +24,16 @@ class Status extends React.Component{
               <div className='image' style={{backgroundImage: `url('${this.props.status.user.avatar}')`}} />
             </div>
           </Link>
-          <a href={this.props.status.user.url} target='_blank' style={{textDecoration: 'none'}}>
-            <div className='name'>
+          <div className='name'>
+            <a href={this.props.status.user.url} target='_blank' style={{textDecoration: 'none'}}>
               {this.props.status.user.uid}
-            </div>
-          </a>
+            </a>
+          </div>
+          <div className='relative-time'>
+            <a href={this.props.status.url} target='_blank'  style={{textDecoration: 'none'}}>
+              {this.props.status.status_created_at ? moment(this.props.status.status_created_at).fromNow() : ''}
+            </a>
+          </div>
         </div>
         <a href={this.props.status.url} target='_blank'  style={{textDecoration: 'none'}}>
           <div className='content' dangerouslySetInnerHTML={{__html: this.props.status.content}}></div>

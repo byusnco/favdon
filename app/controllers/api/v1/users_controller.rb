@@ -19,13 +19,15 @@ class Api::V1::UsersController < Api::V1::BaseController
     @statuses = []
     @objects.each do |object|
       if object.favourites_count != 0 && object.reblogs_count != 0
-        @statuses << Status.find_or_create_by(uri: object.uri) do |status|
-          status.url = object.url
-          status.content = object.content
-          status.favourites_count = object.favourites_count
-          status.reblogs_count = object.reblogs_count
-          status.user_id = current_user.id
-        end
+        status = Status.find_or_initialize_by(uri: object.uri)
+        status.url = object.url
+        status.content = object.content
+        status.favourites_count = object.favourites_count
+        status.reblogs_count = object.reblogs_count
+        status.status_created_at = object.created_at
+        status.user_id = current_user.id
+        status.save
+        @statuses << status
       end
       #TODO: update counts if not new record
     end
