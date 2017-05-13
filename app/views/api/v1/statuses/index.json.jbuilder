@@ -1,4 +1,5 @@
 json.array! @statuses do |status|
+  json.id status.id
   json.uri status.uri
   json.url status.url
   json.content status.content

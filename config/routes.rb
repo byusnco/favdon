@@ -14,6 +14,10 @@ Rails.application.routes.draw do
       end
       post '/users/fetch', to: 'users#fetch'
       resources :statuses, only: [:index]
+      post '/statuses/:id/favourite', to: 'statuses#favourite'
+      post '/statuses/:id/unfavourite', to: 'statuses#unfavourite'
+      post '/statuses/:id/reblog', to: 'statuses#reblog'
+      post '/statuses/:id/unreblog', to: 'statuses#unreblog'
     end
   end
 end
