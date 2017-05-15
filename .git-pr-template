@@ -1,0 +1,9 @@
+Release <%= Time.now %>
+### Tasks
+
+- [ ] Merge this PR
+
+### Close Issues & Merge PRs
+<% pull_requests.each do |pr| %>
+<%= pr.to_checklist_item %>
+<% end %>
