@@ -18,7 +18,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     @objects = current_user.get_statuses
     @statuses = []
     @objects.each do |object|
-      if object.favourites_count != 0 && object.reblogs_count != 0
+      if object.favourites_count > 0 || object.reblogs_count > 0
         status = Status.find_or_initialize_by(uri: object.uri)
         status.url = object.url
         status.content = object.content
