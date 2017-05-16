@@ -25,6 +25,9 @@ class Api::V1::UsersController < Api::V1::BaseController
         status.favourites_count = object.favourites_count
         status.reblogs_count = object.reblogs_count
         status.status_created_at = object.created_at
+        status.spoiler_text = object.attributes['spoiler_text']
+        status.sensitive = object.attributes['sensitive']
+
         status.user_id = current_user.id
         status.save
         @statuses << status
