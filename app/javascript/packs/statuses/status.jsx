@@ -7,6 +7,7 @@ import MoreHoriz from 'material-ui/svg-icons/navigation/more-horiz'
 import {Link} from 'react-router-dom'
 import * as moment from 'moment'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
+import Chip from 'material-ui/Chip'
 import Cookies from 'js-cookie'
 
 class Status extends React.Component{
@@ -19,7 +20,8 @@ class Status extends React.Component{
       loading_fav: false,
       faved: false,
       loading_reblog: false,
-      reblogged: false
+      reblogged: false,
+      open_spoiler: false
     }
   }
 
@@ -78,6 +80,35 @@ class Status extends React.Component{
       }
     }
 
+    var content
+    if(this.props.status.spoiler_text){
+      if(this.state.open_spoiler){
+        content = (
+          <div>
+            <div className='spoiler'>{this.props.status.spoiler_text}</div>
+            <div className='content' dangerouslySetInnerHTML={{__html: this.props.status.content}}></div>
+          </div>
+        )
+      }else{
+        content = (
+          <div>
+            <div className='spoiler'>{this.props.status.spoiler_text}</div>
+            <Chip
+              children='もっと見る'
+              onTouchTap={()=>this.setState({open_spoiler: true})}
+              style={{marginLeft: '30px', marginTop: '15px'}}
+            />
+          </div>
+        )
+      }
+    }else{
+      content = (
+        <a href={this.props.status.url} target='_blank'  style={{textDecoration: 'none'}}>
+          <div className='content' dangerouslySetInnerHTML={{__html: this.props.status.content}}></div>
+        </a>
+      )
+    }
+
     return(
       <Card className='status-card'>
         <div className='header'>
@@ -97,9 +128,7 @@ class Status extends React.Component{
             </a>
           </div>
         </div>
-        <a href={this.props.status.url} target='_blank'  style={{textDecoration: 'none'}}>
-          <div className='content' dangerouslySetInnerHTML={{__html: this.props.status.content}}></div>
-        </a>
+        {content}
         <div className='details'>
           <div className='details-counters'>
             <div className='counter'>

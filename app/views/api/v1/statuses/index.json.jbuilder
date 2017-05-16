@@ -6,6 +6,7 @@ json.array! @statuses do |status|
   json.favourites_count status.favourites_count
   json.reblogs_count status.reblogs_count
   json.status_created_at status.status_created_at
+  json.spoiler_text 'test'
   json.user do
     json.id status.user.id
     json.uid status.user.uid
