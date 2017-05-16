@@ -5,13 +5,13 @@ class UsersController < ApplicationController
 
   # omniauth callback
   def create
-    # TODO don't create user but fetch data if uid exsists
-    # user with token is logged_in user
     @auth = request.env['omniauth.auth']
-    user_info     = @auth['extra']['raw_info']
+    user_info = @auth['extra']['raw_info']
+
     uri = URI.parse(user_info['url'])
     # @auth['uid'] is from user input not omniauth callback, so don't use that
     uid = "#{uri.path.split('@')[1]}@#{uri.host}"
+
     @user = User.find_or_create_by(uid: uid) do |user|
       user.token    = @auth['credentials']['token']
 
