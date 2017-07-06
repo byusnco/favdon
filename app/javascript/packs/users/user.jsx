@@ -54,6 +54,15 @@ class User extends React.Component{
         primary={true}
         disabled={this.state.fetching}
       />
+      var unsubscribeLink = (
+        <div>
+          <a
+            href='#'
+            onClick={this.onClickUnsubscribe.bind(this)}
+            style={{color: '#999', fontSize: '12px', float: 'right', marginRight: '10px'}}
+            >Fav丼のデータを削除</a>
+        </div>
+      )
     }
     var progress
     if(this.state.fetching){
@@ -72,6 +81,7 @@ class User extends React.Component{
         {progress}
         <div style={styles.userContainer}>
           <Card className='user-card'>
+            {unsubscribeLink}
             <div className='avatar'>
               <img src={this.state.user.avatar} />
             </div>
@@ -152,6 +162,29 @@ class User extends React.Component{
       this.setState({user: json})
     })
   }
+
+  onClickUnsubscribe(){
+    var res = confirm('保存されたデータを削除します。宜しいですか？')
+    if(res){
+      this.unsubscribe()
+    }
+  }
+
+  unsubscribe(){
+    fetch(`/api/v1/users/${this._userId()}/destroy`, {
+      headers: { Authorization: `Bearer ${Cookies.get('auth_token')}` },
+      method: 'delete',
+      body: JSON.stringify({})
+    }).then((response) =>{ return response.json() }
+    ).then((json) => {
+      if(json.success){
+        alert('データを削除しました。リロードして確認して下さい。')
+      }else{
+        alert('削除に失敗しました。再度ログインしてお試しください。')
+      }
+    })
+  }
+
 }
 
 var styles = {
