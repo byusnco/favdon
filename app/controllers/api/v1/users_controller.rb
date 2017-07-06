@@ -39,6 +39,11 @@ class Api::V1::UsersController < Api::V1::BaseController
     render 'api/v1/statuses/index.json'
   end
 
+  def destroy
+    current_user.destroy!
+    render json: { success: true }
+  end
+
   private
 
   def set_user
