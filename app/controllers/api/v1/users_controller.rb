@@ -18,19 +18,22 @@ class Api::V1::UsersController < Api::V1::BaseController
     @objects = current_user.get_statuses
     @statuses = []
     @objects.each do |object|
-      if object.favourites_count > 0 || object.reblogs_count > 0
-        status = Status.find_or_initialize_by(uri: object.uri)
-        status.url = object.url
-        status.content = object.content
-        status.favourites_count = object.favourites_count
-        status.reblogs_count = object.reblogs_count
-        status.status_created_at = object.created_at
-        status.spoiler_text = object.attributes['spoiler_text']
-        status.sensitive = object.attributes['sensitive']
+      visibility = object.attributes['visibility']
+      if visibility == 'public' || visibility == 'unlisted' # ignore private and DM
+        if object.favourites_count > 0 || object.reblogs_count > 0
+          status = Status.find_or_initialize_by(uri: object.uri)
+          status.url = object.url
+          status.content = object.content
+          status.favourites_count = object.favourites_count
+          status.reblogs_count = object.reblogs_count
+          status.status_created_at = object.created_at
+          status.spoiler_text = object.attributes['spoiler_text']
+          status.sensitive = object.attributes['sensitive']
 
-        status.user_id = current_user.id
-        status.save
-        @statuses << status
+          status.user_id = current_user.id
+          status.save
+          @statuses << status
+        end
       end
     end
     render 'api/v1/statuses/index.json'
